@@ -37,4 +37,8 @@ La aplicación necesita acceder a SQL Server para consultar los datos y realizar
 
 Las dependencias de Python y el procedimiento de arranque se instalarán o ejecutarán siguiendo las instrucciones del archivo `README.md` del proyecto.
 
+## Cómo ejecutar el proyecto
+
+
+
 
