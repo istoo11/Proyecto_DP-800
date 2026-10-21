@@ -35,10 +35,50 @@ La aplicación necesita acceder a SQL Server para consultar los datos y realizar
 - **SQL Server:** https://www.microsoft.com/sql-server/sql-server-downloads
 - **Microsoft ODBC Driver for SQL Server:** https://learn.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server
 
-Las dependencias de Python y el procedimiento de arranque se instalarán o ejecutarán siguiendo las instrucciones del archivo `README.md` del proyecto.
+## Preparar el entorno virtual
 
-## Cómo ejecutar el proyecto
+Si es la primera vez que ejecutas el proyecto en tu equipo, abre una terminal en la carpeta raíz del repositorio y ejecuta los siguientes comandos.
 
+**1. Crear el entorno virtual de Python**
 
+```powershell
+py -3 -m venv Backend\.venv
+```
 
+**2. Instalar las dependencias del proyecto**
+
+```powershell
+.\Backend\.venv\Scripts\python.exe -m pip install -r Backend\requirements.txt
+```
+
+Una vez completados estos pasos, el entorno virtual estará preparado para ejecutar la aplicación. No es necesario repetirlos en cada inicio, salvo que tengas que instalar nuevas dependencias o reconstruir el entorno.
+
+## Ejecutar el proyecto
+
+Antes de iniciar la aplicación, asegúrate de cumplir los siguientes requisitos:
+
+- **Python y dependencias:** tener Python instalado y el entorno virtual creado en `Backend/.venv`, con las dependencias del archivo `Backend/requirements.txt` instaladas.
+- **Base de datos:** ejecutar previamente todos los scripts SQL de la carpeta `Scripts` para crear las tablas y preparar los datos necesarios.
+- **Configuración:** crear y configurar el archivo `Backend/.env` con la cadena de conexión a SQL Server.
+- **Ollama:** tener Ollama instalado y en ejecución.
+- **Modelos de IA:** descargar los modelos `embeddinggemma` y `qwen2.5:3b` mediante los siguientes comandos:
+
+  ```powershell
+  ollama pull embeddinggemma
+  ollama pull qwen2.5:3b
+  ```
+
+### Iniciar la aplicación
+
+Una vez completados los pasos anteriores, abre una terminal en la carpeta raíz del proyecto y ejecuta el siguiente comando:
+
+```powershell
+.\Backend\.venv\Scripts\python.exe -m uvicorn app:app --app-dir Backend --host 127.0.0.1 --port 8000
+```
+
+Cuando el servidor esté iniciado, abre la siguiente dirección en tu navegador:
+
+http://127.0.0.1:8000
+
+Para detener el servidor, pulsa `Ctrl + C` en la terminal.
 

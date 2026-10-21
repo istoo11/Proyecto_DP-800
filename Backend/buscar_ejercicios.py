@@ -9,7 +9,7 @@ load_dotenv()
 
 MODELO_EMBEDDING = "embeddinggemma"
 DIMENSIONES = 768
-RESULTADOS = 1
+RESULTADOS = 5
 
 CONNECTION_STRING = os.getenv("SQL_CONNECTION_STRING")
 
@@ -67,47 +67,3 @@ def buscar_ejercicios(pregunta):
         return cursor.fetchall()
 
 
-def main():
-    if not CONNECTION_STRING:
-        print("Error: falta SQL_CONNECTION_STRING en el .env")
-        return
-
-    print("=== Buscador semántico de ejercicios ===")
-    print("Escribe 'salir' para terminar.\n")
-
-    while True:
-        pregunta = input("Tú: ").strip()
-
-        if pregunta.lower() == "salir":
-            print("¡Hasta luego!")
-            break
-
-        if not pregunta:
-            continue
-
-        try:
-            resultados = buscar_ejercicios(pregunta)
-
-            if not resultados:
-                print("No hay ejercicios con embeddings.\n")
-                continue
-
-            print("\nEjercicios más parecidos:\n")
-
-            for i, fila in enumerate(resultados, start=1):
-                print(f"--- Resultado {i} ---")
-                print(f"ID: {fila.id}")
-                print(f"Categoría: {fila.descripcion}")
-                print(f"Ejercicio: {fila.ejercicio}")
-                print(f"Solución: {fila.solucion}")
-                print(
-                    f"Distancia: {fila.distancia:.4f}"
-                )
-                print()
-
-        except Exception as error:
-            print(f"Error durante la búsqueda: {error}\n")
-
-
-if __name__ == "__main__":
-    main()

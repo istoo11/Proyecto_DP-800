@@ -46,5 +46,14 @@ CREATE TABLE dbo.leaderboard (
 GO
 
 -- -----------------------------------------------------------------------------
--- 3. PROCEDIMIENTOS ALMACENADOS
+-- 3.CREACIÓN DE VISTAS
 -- -----------------------------------------------------------------------------
+
+CREATE VIEW clasificacion AS
+SELECT
+    u.nombre,
+    e.descripcion AS bloque,
+    DATEDIFF(SECOND, l.fecha_comienzo, l.fecha_fin) AS tiempo
+FROM ejercicios e
+JOIN leaderboard l ON l.id_ejercicio = e.id
+JOIN usuarios u ON u.id = l.id_usuario;   

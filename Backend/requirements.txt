@@ -1,3 +1,5 @@
+fastapi
+uvicorn[standard]
 ollama
 pyodbc
 python-dotenv

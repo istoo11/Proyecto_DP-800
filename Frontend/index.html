@@ -1,0 +1,124 @@
+ 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buscador de ejercicios</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="fondo-malla" aria-hidden="true"></div>
+
+    <main class="contenedor">
+
+        <!-- Cabecera -->
+        <header class="encabezado">
+            <h1>¿Qué ejercicios quieres practicar?</h1>
+            <p>Encuentra ejercicios de matemáticas adaptados a lo que necesitas mejorar.</p>
+        </header>
+
+        <!-- Navegación entre secciones -->
+        <nav class="navegacion" aria-label="Navegación principal">
+            <button
+                id="btnEjercicios"
+                class="tab activo"
+                type="button"
+                aria-controls="seccionEjercicios"
+                aria-pressed="true">
+                📚 Ejercicios
+            </button>
+
+            <button
+                id="btnLeaderboard"
+                class="tab"
+                type="button"
+                aria-controls="seccionLeaderboard"
+                aria-pressed="false">
+                🏆 Leaderboard
+            </button>
+        </nav>
+       
+        <!-- Sección de ejercicios -->
+        <section id="seccionEjercicios">
+
+            <div class="encabezado-leaderboard">
+                <h2>📚 Practica matemáticas</h2>
+                <p>
+                    Busca ejercicios por tema, dificultad o lo que quieras mejorar.
+                </p>
+            </div>
+
+            <form id="formulario" class="barra-busqueda">
+                <input
+                    id="consulta"
+                    type="text"
+                    placeholder="Ej. Quiero mejorar en las sumas"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">
+                    Buscar <kbd>↵</kbd>
+                </button>
+            </form>
+
+            <div
+                id="resultado"
+                class="resultado"
+                aria-live="polite">
+            </div>
+
+        </section>
+
+
+        <!-- Sección del leaderboard -->
+        <section id="seccionLeaderboard" hidden>
+
+            <div class="encabezado-leaderboard">
+                <h2>🏆 Leaderboard</h2>
+                <p>
+                    Consulta puntuaciones, mejores tiempos y estadísticas.
+                </p>
+            </div>
+
+            <form id="formularioLeaderboard" class="barra-busqueda">
+                <input
+                    id="consultaLeaderboard"
+                    type="text"
+                    placeholder="Ej. Dame los 5 mejores tiempos"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">
+                    Consultar <kbd>↵</kbd>
+                </button>
+            </form>
+
+            <div
+                id="resultadosLeaderboard"
+                class="resultado-leaderboard"
+                aria-live="polite">
+
+                <p class="mensaje-inicial">
+                    Escribe una consulta para ver los resultados.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
